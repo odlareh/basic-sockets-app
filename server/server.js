@@ -21,7 +21,11 @@ let io = socketIO(server);
 
 // Listen to connections from the frontend
 io.on('connection', (client) => {
-    console.log('Cliente conectado')
+    console.log('Cliente conectado');
+
+    client.on('disconnect', () => {
+        console.log('Cliente desconectado.')
+    })
 })
 
 // Port to listen
