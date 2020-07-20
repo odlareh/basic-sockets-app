@@ -19,7 +19,13 @@ app.use(express.static(path.resolve(__dirname, '../public')));
 // Enable comunication with backend
 let io = socketIO(server);
 
+// Listen to connections from the frontend
+io.on('connection', (client) => {
+    console.log('Cliente conectado')
+})
+
 // Port to listen
-server.listen(process.env.PORT, () => {
+server.listen(process.env.PORT, (err) => {
+    if (err) throw new Error(err );
     console.log('Escuchando en puerto: ' + process.env.PORT)
 });

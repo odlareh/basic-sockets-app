@@ -7,5 +7,13 @@
 </head>
 <body>
     <h1>Basic Sockets Application</h1>
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+        // Enable comunication with frontend
+        var socket = io();
+        socket.on('connect', function() {
+            console.log('Cliente conectado con el servidor.')
+        })
+    </script>
 </body>
 </html>
