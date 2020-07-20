@@ -17,16 +17,10 @@ app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, '../public')));
 
 // Enable comunication with backend
-let io = socketIO(server);
+module.exports.io = socketIO(server);
 
 // Listen to connections from the frontend
-io.on('connection', (client) => {
-    console.log('Cliente conectado');
-
-    client.on('disconnect', () => {
-        console.log('Cliente desconectado.')
-    })
-})
+require('./sockets/socket-config');
 
 // Port to listen
 server.listen(process.env.PORT, (err) => {
